@@ -27,9 +27,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->Html->css('vendor/foundation/css/foundation.min.css') ?>
-    <?#= $this->fetch('meta') ?>
-    <?#= $this->fetch('css') ?>
-    <?#= $this->fetch('script') ?>
+
 </head>
 <body>
 <?= $this->Flash->render() ?>
