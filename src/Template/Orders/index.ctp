@@ -1,7 +1,7 @@
 <?= $this->element('Orders/header', array('title' => 'CakeTeam\'s Orders')); ?>
 <div class="row">
    <div class="small-12 columns text-center">
-       <p>What would you like to do?</p>
+       <p>Would you like to ...</p>
    </div>
 </div>
 <div class="row">
@@ -10,7 +10,7 @@
             <div class="small-12 medium-6 columns">
                 <?php
                     print $this->Html->link(
-                        'Place Your Order',
+                        'Place an Order',
                         ['controller' => 'Orders', 'action' => 'add'],
                         ['class'=> 'expanded button']
                     );
@@ -19,7 +19,7 @@
             <div class="small-12 medium-6 columns">
                 <?php
                 print $this->Html->link(
-                    'Track Your Order',
+                    'Track an Order',
                     ['controller' => 'Orders', 'action' => 'track'],
                     ['class'=> 'expanded alert button']
                 );
