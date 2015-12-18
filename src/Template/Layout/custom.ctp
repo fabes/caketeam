@@ -36,5 +36,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </section>
 <footer>
 </footer>
+<?= $this->Html->script('/vendor/foundation/js/vendor/jquery.min.js') ?>
+<?= $this->Html->script('/vendor/foundation/js/foundation.min.js') ?>
 </body>
 </html>
