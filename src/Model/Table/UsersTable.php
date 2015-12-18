@@ -1,19 +1,18 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Order;
+use App\Model\Entity\User;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Orders Model
+ * Users Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Orders
- * @property \Cake\ORM\Association\BelongsTo $Users
+ * @property \Cake\ORM\Association\HasMany $Orders
  */
-class OrdersTable extends Table
+class UsersTable extends Table
 {
 
     /**
@@ -26,17 +25,12 @@ class OrdersTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('orders');
-        $this->displayField('title');
+        $this->table('users');
+        $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->belongsTo('Orders', [
-            'foreignKey' => 'id',
-            'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
-            'joinType' => 'INNER'
+        $this->hasMany('Orders', [
+            'foreignKey' => 'user_id'
         ]);
     }
 
@@ -49,18 +43,21 @@ class OrdersTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->requirePresence('title', 'create')
-            ->notEmpty('title');
+            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('id', 'create');
 
         $validator
-            ->add('status', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
+            ->requirePresence('first_name', 'create')
+            ->notEmpty('first_name');
 
         $validator
-            ->add('date', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('date', 'create')
-            ->notEmpty('date');
+            ->requirePresence('last_name', 'create')
+            ->notEmpty('last_name');
+
+        $validator
+            ->add('email', 'valid', ['rule' => 'email'])
+            ->requirePresence('email', 'create')
+            ->notEmpty('email');
 
         return $validator;
     }
@@ -74,8 +71,7 @@ class OrdersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['order_id'], 'Orders'));
-        $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->isUnique(['email']));
         return $rules;
     }
 }

@@ -16,15 +16,14 @@ class OrdersController extends AppController
      *
      * @return void
      */
-    public function _use_layout($name){
+    protected function _use_layout($name){
         return $this->viewBuilder()->layout($name);
     }
 
     public function index()
     {
         $this->_use_layout('custom');
-
-        $this->set('orders', $this->paginate($this->Orders));
+        $this->set('orders', $this->paginate($this->Orders->find('all', ['contain' => ['Users']])));
         $this->set('_serialize', ['orders']);
     }
 
