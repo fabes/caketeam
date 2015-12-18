@@ -36,6 +36,7 @@ class OrdersController extends AppController
      */
     public function view($id = null)
     {
+        $this->_use_layout('custom');
         $order = $this->Orders->get($id, [
             'contain' => []
         ]);
