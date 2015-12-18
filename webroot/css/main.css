@@ -3,3 +3,8 @@ body, html {
   font-size: 14px;
   color: #333333;
 }
+
+/* line 5, ../sass/main.sass */
+.row {
+  max-width: 62.5rem;
+}

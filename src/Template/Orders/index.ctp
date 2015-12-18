@@ -1,1 +1,1 @@
-test baking order
+<?= $this->element('Orders/header', array('title' => 'CakeTeam\'s Orders')); ?>
