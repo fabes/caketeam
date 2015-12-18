@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property int $user_id
  * @property \App\Model\Entity\User $user
  * @property string $title
+ * @property int $status
  * @property int $date
  */
 class Order extends Entity

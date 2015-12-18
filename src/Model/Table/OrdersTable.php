@@ -53,6 +53,11 @@ class OrdersTable extends Table
             ->notEmpty('title');
 
         $validator
+            ->add('status', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('status', 'create')
+            ->notEmpty('status');
+
+        $validator
             ->add('date', 'valid', ['rule' => 'numeric'])
             ->requirePresence('date', 'create')
             ->notEmpty('date');
