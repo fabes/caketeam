@@ -30,4 +30,21 @@ class Order extends Entity
         '*' => true,
         'order_id' => false,
     ];
+
+    protected function _getFullStatus(){
+        $status = null;
+        switch($this->_properties['status']):
+            case 0:
+                $status = 'In Progress';
+                break;
+            case 1:
+                $status = 'Ready';
+                break;
+            default:
+                $status = '--';
+                break;
+        endswitch;
+
+        return $status;
+    }
 }

@@ -28,3 +28,20 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="small-12 columns">
+        <h4>Upcoming orders</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 columns">
+        <?php foreach($orders as $order){?>
+            <div class="row">
+                <div class="small-12 medium-1 columns"><?= $order->order_id; ?></div>
+                <div class="small-12 medium-6 columns"><?= $order->title; ?></div>
+                <div class="small-12 medium-3 columns">--</div>
+                <div class="small-12 medium-2 columns"><?= $order->full_status; ?></div>
+            </div>
+        <?php }?>
+    </div>
+</div>
