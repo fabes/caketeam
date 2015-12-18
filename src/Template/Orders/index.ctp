@@ -19,9 +19,8 @@
             <div class="small-12 medium-6 columns">
                 <?php
                 print $this->Html->link(
-                    'Track an Order',
-                    ['controller' => 'Orders', 'action' => 'track'],
-                    ['class'=> 'expanded alert button']
+                    'Track an Order', 'javascript:;',
+                    ['class'=> 'expanded alert button open-modal', 'data-open' => "track_order_modal"]
                 );
                 ?>
             </div>
@@ -48,3 +47,4 @@
         <?php }?>
     </div>
 </div>
+<?= $this->element('Modals/track_order'); ?>

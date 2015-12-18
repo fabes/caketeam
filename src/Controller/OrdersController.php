@@ -113,5 +113,9 @@ class OrdersController extends AppController
 
     public function track(){
         $this->_use_layout('custom');
+
+        $tracking_code = (int) $this->request->query['code'];
+        $order = $this->Orders->find('all')->where(['id'=>$tracking_code])->first();
+        $this->set('order', $order);
     }
 }
