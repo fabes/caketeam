@@ -48,8 +48,10 @@ Router::scope('/', function ($routes) {
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-    $routes->connect('/orders', ['controller' => 'Orders', 'action' => 'index', 'index']);
 
+    /** ORDERS **/
+    $routes->connect('/orders', ['controller' => 'Orders', 'action' => 'index', 'index']);
+    $routes->connect('/orders/track/:code', ['controller' => 'Orders', 'action' => 'track'], ['name' => 'track_order']);
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */

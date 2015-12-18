@@ -16,10 +16,13 @@ class OrdersController extends AppController
      *
      * @return void
      */
+    public function _use_layout($name){
+        return $this->viewBuilder()->layout($name);
+    }
+
     public function index()
     {
-        //use custom layout for this
-        $this->viewBuilder()->layout('custom');
+        $this->_use_layout('custom');
 
         $this->set('orders', $this->paginate($this->Orders));
         $this->set('_serialize', ['orders']);
@@ -48,6 +51,8 @@ class OrdersController extends AppController
      */
     public function add()
     {
+        $this->_use_layout('custom');
+
         $order = $this->Orders->newEntity();
         if ($this->request->is('post')) {
             $order = $this->Orders->patchEntity($order, $this->request->data);
@@ -104,5 +109,9 @@ class OrdersController extends AppController
             $this->Flash->error(__('The order could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function track(){
+        $this->_use_layout('custom');
     }
 }

@@ -5,6 +5,11 @@ body, html {
 }
 
 /* line 5, ../sass/main.sass */
+header {
+  margin-top: 4rem;
+}
+
+/* line 7, ../sass/main.sass */
 .row {
   max-width: 62.5rem;
 }
